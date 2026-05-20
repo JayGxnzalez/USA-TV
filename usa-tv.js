@@ -143,7 +143,7 @@ async function searchResults(query) {
 async function extractDetails(href) {
   var ch = CHANNELS.find(function(c) { return c.id === href; });
   if (!ch) return [];
-  return [{ title: ch.name, image: ch.poster || ch.logo, description: ch.genre + " - Live TV - USA", aliases: "Genre: " + ch.genre, href: href }];
+  return [{ title: ch.name, image: ch.poster || ch.logo, description: ch.genre, href: href }];
 }
 
 async function extractEpisodes(href) {
