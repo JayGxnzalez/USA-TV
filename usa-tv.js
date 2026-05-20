@@ -144,14 +144,14 @@ async function searchResults(query) {
 
 async function extractDetails(href) {
   var ch = CHANNELS.find(function(c) { return c.id === href; });
-  if (!ch) return [];
-  return [{ title: ch.name, image: ch.poster || ch.logo, description: ch.genre, href: href }];
+  if (!ch) return JSON.stringify([]);
+  return JSON.stringify([{ title: ch.name, image: ch.poster || ch.logo, description: ch.genre, href: href }]);
 }
 
 async function extractEpisodes(href) {
   var ch = CHANNELS.find(function(c) { return c.id === href; });
-  if (!ch) return [];
-  return [{ number: 1, title: "Watch Live", href: href }];
+  if (!ch) return JSON.stringify([]);
+  return JSON.stringify([{ number: 1, title: "Watch Live", href: href }]);
 }
 
 async function extractStreamUrl(href) {
