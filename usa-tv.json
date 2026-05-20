@@ -1,0 +1,27 @@
+{
+  "sourceName": "USA TV",
+  "iconUrl": "https://848b3516657c-usatv.baby-beamup.club/public/logo.png",
+  "author": {
+    "name": "Jay",
+    "icon": "https://avatars.githubusercontent.com/JayGxnzalez?s=400",
+    "url": "https://github.com/JayGxnzalez"
+  },
+  "version": "1.0.0",
+  "language": "English",
+  "streamType": "HLS",
+  "quality": "1080p",
+  "baseUrl": "https://848b3516657c-usatv.baby-beamup.club/",
+  "searchBaseUrl": "https://848b3516657c-usatv.baby-beamup.club/",
+  "scriptUrl": "https://raw.githubusercontent.com/JayGxnzalez/USA-TV-Module/refs/heads/main/usa-tv.js",
+  "asyncJS": true,
+  "type": "live",
+  "softsub": false,
+  "downloadSupport": false,
+  "supportsMojuru": false,
+  "supportsDartotsu": false,
+  "supportsSora": true,
+  "supportsLuna": false,
+  "supportsAnymex": false,
+  "supportsTsumi": false,
+  "supportsHiyoku": false
+}
