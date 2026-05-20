@@ -16,7 +16,7 @@
   "asyncJS": true,
   "type": "live",
   "softsub": true,
-  "downloadSupport": true,
+  "downloadSupport": false,
   "supportsMojuru": true,
   "supportsDartotsu": true,
   "supportsSora": true,
