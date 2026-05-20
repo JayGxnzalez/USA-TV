@@ -135,6 +135,11 @@ async function searchResults(query) {
       return ch.name.toLowerCase().includes(q) || ch.genre.toLowerCase().includes(q);
     });
   }
+  var results = filtered.map(function(ch) {
+    return { title: ch.name, image: ch.logo, href: ch.id };
+  });
+  return JSON.stringify(results);
+}
   return filtered.map(function(ch) {
     return { title: ch.name, image: ch.logo, href: ch.id };
   });
