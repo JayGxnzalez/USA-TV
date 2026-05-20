@@ -165,5 +165,5 @@ async function extractStreamUrl(href) {
   var streams = sorted.map(function(s) {
     return { url: s.url, quality: s.q + " [" + s.d + "]", subtitles: [], headers: {} };
   });
-  return { streams: streams, subtitles: [] };
+  return JSON.stringify({ streams: streams, subtitles: [] });
 }
