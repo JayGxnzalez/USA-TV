@@ -125,6 +125,7 @@ var CHANNELS = [
   {id:"ustv-2d475b96-9351-4049-83e3-f0c164fe63cf",name:"Univision",genre:"Latino",logo:"https://848b3516657c-usatv.baby-beamup.club/public/logos/usa/univision-us.png",poster:"https://848b3516657c-usatv.baby-beamup.club/public/posters/usa/univision-us.png",streams:[{url:"https://tvpass.org/live/UnivisionEast/sd",q:"SD",d:"TP"}]}
 ];
 
+
 async function searchResults(query) {
   var q = query.toLowerCase().trim();
   var filtered;
@@ -135,10 +136,9 @@ async function searchResults(query) {
       return ch.name.toLowerCase().includes(q) || ch.genre.toLowerCase().includes(q);
     });
   }
-  var results = filtered.map(function(ch) {
+  return filtered.map(function(ch) {
     return { title: ch.name, image: ch.logo, href: ch.id };
   });
-  return JSON.stringify(results);
 }
 
 async function extractDetails(href) {
@@ -166,4 +166,3 @@ async function extractStreamUrl(href) {
   });
   return { streams: streams, subtitles: [] };
 }
-
