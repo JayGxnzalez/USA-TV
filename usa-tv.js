@@ -140,10 +140,6 @@ async function searchResults(query) {
   });
   return JSON.stringify(results);
 }
-  return filtered.map(function(ch) {
-    return { title: ch.name, image: ch.logo, href: ch.id };
-  });
-}
 
 async function extractDetails(href) {
   var ch = CHANNELS.find(function(c) { return c.id === href; });
@@ -170,3 +166,4 @@ async function extractStreamUrl(href) {
   });
   return { streams: streams, subtitles: [] };
 }
+
