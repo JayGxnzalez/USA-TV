@@ -156,7 +156,7 @@ async function extractEpisodes(href) {
 
 async function extractStreamUrl(href) {
   try {
-    var response = await fetchv2("https://848b3516657c-usatv.baby-beamup.club/stream/tv/" + href + ".json", {}, "GET", null);
+    var response = await fetchv2("https://848b3516657c-usatv.baby-beamup.club/stream/tv/" + href + ".json");
     var data = JSON.parse(response);
     var rawStreams = data.streams || [];
     var sorted = rawStreams.slice().sort(function(a, b) {
