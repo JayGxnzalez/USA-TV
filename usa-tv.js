@@ -155,15 +155,27 @@ async function extractEpisodes(href) {
 }
 
 async function extractStreamUrl(href) {
-  var ch = CHANNELS.find(function(c) { return c.id === href; });
-  if (!ch || !ch.streams || ch.streams.length === 0) return null;
-  var sorted = ch.streams.slice().sort(function(a, b) {
-    var idxA = SOURCE_PRIORITY.indexOf(a.d);
-    var idxB = SOURCE_PRIORITY.indexOf(b.d);
-    return (idxA === -1 ? 999 : idxA) - (idxB === -1 ? 999 : idxB);
-  });
-  var streams = sorted.map(function(s) {
-    return { url: s.url, quality: s.q + " [" + s.d + "]", subtitles: [], headers: {} };
-  });
-  return JSON.stringify({ streams: streams, subtitles: [] });
+  try {
+    var response = await fetchv2("https://848b3516657c-usatv.baby-beamup.club/stream/tv/" + href + ".json", {}, "GET", null);
+    var data = JSON.parse(response);
+    var rawStreams = data.streams || [];
+    var sorted = rawStreams.slice().sort(function(a, b) {
+      var labelA = a.description || "ST";
+      var labelB = b.description || "ST";
+      var idxA = SOURCE_PRIORITY.indexOf(labelA);
+      var idxB = SOURCE_PRIORITY.indexOf(labelB);
+      return (idxA === -1 ? 999 : idxA) - (idxB === -1 ? 999 : idxB);
+    });
+    var streams = sorted.map(function(s) {
+      return { url: s.url, quality: (s.name || "HD") + " [" + (s.description || "ST") + "]", subtitles: [], headers: {} };
+    });
+    return JSON.stringify({ streams: streams, subtitles: [] });
+  } catch(e) {
+    var ch = CHANNELS.find(function(c) { return c.id === href; });
+    if (!ch || !ch.streams || ch.streams.length === 0) return null;
+    var streams = ch.streams.map(function(s) {
+      return { url: s.url, quality: s.q + " [" + s.d + "]", subtitles: [], headers: {} };
+    });
+    return JSON.stringify({ streams: streams, subtitles: [] });
+  }
 }
