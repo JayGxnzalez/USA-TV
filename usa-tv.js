@@ -1,7 +1,7 @@
 // USA TV Module for Sora
 // Live US TV channels - Sports, News, Entertainment and more
 
-var SOURCE_PRIORITY = ["AX","MJ","MJE","PLX","PTV","TB","XM","LN","SMG","ST","STR","CV","TP"];
+var SOURCE_PRIORITY = ["LN","XM","MJ","MJE","PLX","PTV","TB","SMG","ST","STR","CV","TP","AX"];
 
 function getSourceLabel(url) {
   if (url.includes("a1xs.vip")) return "AX";
